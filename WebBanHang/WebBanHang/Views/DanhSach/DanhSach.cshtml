@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebBanHang.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "DanhSach";
+}
+
+<h2>DanhSach</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    <a href="~/DanhSach/ThemMoi">Thêm Mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNguoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChucVu.TenChucVu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNguoiDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioiTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucVu.TenChucVu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDNguoiDung }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDNguoiDung }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDNguoiDung })
+        </td>
+    </tr>
+}
+
+</table>

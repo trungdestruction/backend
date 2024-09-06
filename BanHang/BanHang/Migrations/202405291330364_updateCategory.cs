@@ -1,0 +1,18 @@
+namespace BanHang.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class updateCategory : DbMigration
+    {
+        public override void Up()
+        {
+            AlterColumn("dbo.Table_Category", "Title", c => c.String(nullable: false, maxLength: 150));
+        }
+        
+        public override void Down()
+        {
+            AlterColumn("dbo.Table_Category", "Title", c => c.String());
+        }
+    }
+}

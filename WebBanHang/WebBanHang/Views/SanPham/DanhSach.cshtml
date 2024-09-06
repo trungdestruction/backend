@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebBanHang.Models.SanPham>
+
+@{
+    ViewBag.Title = "DanhSach";
+}
+
+<h2>DanhSach</h2>
+
+<p>
+    @Html.ActionLink("Thêm Sản Phẩm", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhomSanPham.TenNhomSanPham)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThongTin)
+        </td>
+        <td>
+            @*@{
+                WebBanHang.Models.BanHangEntities db = new WebBanHang.Models.BanHangEntities();
+                var nhomSP = db.NhomSanPhams.Find(item.IDNhomSanPham);
+                if (nhomSP != null)
+                {
+                    <span>@nhomSP.TenNhomSanPham</span>
+                }
+            }*@
+
+            @{
+                if (item.IDNhomSanPham != null)
+                {
+                    <span>@item.NhomSanPham.TenNhomSanPham</span>
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "CapNhat", new { id=item.IDSanPham }) |
+            @Html.ActionLink("Delete", "Xoa", new { id=item.IDSanPham })
+        </td>
+    </tr>
+}
+
+</table>
